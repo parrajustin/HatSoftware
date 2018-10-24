@@ -24,8 +24,8 @@ FASTLED_USING_NAMESPACE
 int lower(char c) {
     int a = (int) c;
     if ((a >= 65) && (a <= 90))
-        a = a + 32; 
-    return a;  
+        a = a + 32;
+    return a;
 }
 
 short * stringToArray(char c) {
@@ -95,7 +95,7 @@ int FRAMES_PER_SECOND = 10;
 
 // wifi credentials
  const char* ssid = "BronzeMaple(2.4GHz)\0";
- const char* password = "fourwordsalluppercase\0";
+ const char* password = "these are not the droids you're looking for\0";
 //const char* ssid = "AndroidAP-jp\0";
 //const char* password = "id384478\0";
 
@@ -117,7 +117,7 @@ void setup() {
   // setup wifi connection
   Serial.begin(9600);
   Serial.println();
-  WiFi.begin(ssid, password);  
+  WiFi.begin(ssid, password);
   Serial.print("Connecting");
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -130,7 +130,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   server.begin();
-  
+
   // tell FastLED about the LED strip configuration
   FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
 
@@ -140,12 +140,12 @@ void setup() {
 }
 
 void drawGrid(int x, int y, short *character, CRGB color) {
-  
+
   // Serial.println();
   for(int i = 0; i < 7; i++ ){
     for(int j = 0; j < 5; j++ ) {
       // Serial.print( *( character + (i * 5) + j));
-      if ((*( character + (i * 5) + j)) == 1) 
+      if ((*( character + (i * 5) + j)) == 1)
         leds[coordToInt(j + x, y - i)] = color;
     }
     // Serial.println();
@@ -158,7 +158,7 @@ short drawGridPixel(short *character, int sub, int y) {
 // void drawGrid(int x, int y, short character[7][5], CRGB color) {
 //   for(int i = 0; i < 7; i++ ){
 //     for(int j = 0; j < 5; j++ ) {
-//       if (character[i][j] == 1) 
+//       if (character[i][j] == 1)
 //         leds[coordToInt(j + x, y - i)] = color;
 //     }
 //   }
@@ -272,7 +272,7 @@ void loop()
     } else if (req.indexOf("/fullblack ") != -1) {
       currentPattern = 7;
       fullblack();
-    } 
+    }
 
     client.print("HTTP/1.1 200 OK\r\nContent-type:text/html\r\n\r\n\r\n<!DOCTYPE html><html><head> <link rel=\"icon\" href=\"data:;base64,iVBORw0KGgo=\"> <title>Hat Software!</title></head><body> Use \"Justin 2018\" design: <a href=\"/justin\"> <button>USE DESIGN</button> </a> </br> </br> Use \"Justin 2018\" No Scroll design: <a href=\"/justinNoScroll\"> <button>USE DESIGN</button> </a> </br> </br> Use \"Theta Chi 2018\" design: <a href=\"/theta\"> <button>USE DESIGN</button> </a> </br> </br> Use \"Theta Chi 2018\" No Scroll design: <a href=\"/thetaNoScroll\"> <button>USE DESIGN</button> </a> </br> </br> Use \"UTEP 2018\" No Scroll design: <a href=\"/utep2018NoScroll\"> <button>USE DESIGN</button> </a> </br> </br> Use \"UTEP 2018\" design: <a href=\"/utep2018\"> <button>USE DESIGN</button> </a> </br> </br> Use \"Full White\" design: <a href=\"/fullwhite\"> <button>USE DESIGN</button> </a> </br> </br> Use \"Full Black\" design: <a href=\"/fullblack\"> <button>USE DESIGN</button> </a> </br> </br> Use \"rainbow\" design: <a href=\"/rainbow\"> <button>USE DESIGN</button> </a> </br> </br> Use \"rainbowWithGlitter\" design: <a href=\"/rainbowWithGlitter\"> <button>USE DESIGN</button> </a> </br> </br> Use \"confetti\" design: <a href=\"/confetti\"> <button>USE DESIGN</button> </a> </br> </br> Use \"sinelon\" design: <a href=\"/sinelon\"> <button>USE DESIGN</button> </a> </br> </br> Use \"juggle\" design: <a href=\"/juggle\"> <button>USE DESIGN</button> </a> </br> </br> Use \"bpm\" design: <a href=\"/bpm\"> <button>USE DESIGN</button> </a> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> Use \"10fps\": <a href=\"/10fps\"> <button>USE DESIGN</button> </a> Use \"30fps\": <a href=\"/30fps\"> <button>USE DESIGN</button> </a> Use \"60fps\": <a href=\"/60fps\"> <button>USE DESIGN</button> </a> Use \"120fps\": <a href=\"/120fps\"> <button>USE DESIGN</button> </a> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> Use \"10bright\": <a href=\"/10bright\"> <button>USE DESIGN</button> </a> Use \"30bright\": <a href=\"/30bright\"> <button>USE DESIGN</button> </a> Use \"50bright\": <a href=\"/50bright\"> <button>USE DESIGN</button> </a> Use \"70bright\": <a href=\"/70bright\"> <button>USE DESIGN</button> </a> Use \"90bright\": <a href=\"/90bright\"> <button>USE DESIGN</button> </a></body></html>");
     client.println();
@@ -302,9 +302,9 @@ void loop()
   } else if (currentPattern == 7) {
     fullblack();
   }
-  FastLED.show();  
+  FastLED.show();
   // insert a delay to keep the framerate modest
-  FastLED.delay(1000/FRAMES_PER_SECOND); 
+  FastLED.delay(1000/FRAMES_PER_SECOND);
 
   if (currentPattern == 0 || currentPattern == 1 || currentPattern == 5) {
     slideRow(1);
@@ -332,13 +332,13 @@ void loop()
       displayIndex++;
       displaySubIndex = 0;
     }
-    
+
     if (displayIndex >= 21) {
       displayIndex = 0;
     }
 
   }
-  
+
 
   // do some periodic updates
   if (currentPattern > 10) {
@@ -361,7 +361,7 @@ void setJustin2018() {
   drawGrid(15, 14, t_font5x7, CRGB::Blue);
   drawGrid(20, 14, i_font5x7, CRGB::Green);
   drawGrid(25, 14, n_font5x7, CRGB::Red);
-  
+
   drawGrid(0, 7, d_2, CRGB::Red);
   drawGrid(7, 7, d_0, CRGB::Red);
   drawGrid(14, 7, d_1, CRGB::Red);
@@ -373,7 +373,7 @@ void thetachi2018() {
   drawGrid(6, 14, x_font5x7, CRGB::Red);
   drawGrid(21, 14, g_o, CRGB::Red);
   drawGrid(27, 14,x_font5x7, CRGB::Red);
-  
+
   drawGrid(4, 7, d_2, CRGB::Blue);
   drawGrid(10, 7, d_0, CRGB::Blue);
   drawGrid(16, 7, d_1, CRGB::Blue);
@@ -385,7 +385,7 @@ void utep2018() {
   drawGrid(10, 14, t_font5x7, CRGB::Orange);
   drawGrid(16, 14, e_font5x7, CRGB::Orange);
   drawGrid(22, 14, p_font5x7, CRGB::Orange);
-  
+
   drawGrid(4, 7, d_2,  CRGB::Orange);
   drawGrid(10, 7, d_0, CRGB::Orange);
   drawGrid(16, 7, d_1, CRGB::Orange);
@@ -397,27 +397,27 @@ void fullWhite() {
 void fullblack() {
   fill_solid(leds, NUM_LEDS, CRGB::Black);
 }
-void rainbow() 
+void rainbow()
 {
   // FastLED's built-in rainbow generator
   fill_rainbow( leds, NUM_LEDS, gHue, 7);
 }
 
-void rainbowWithGlitter() 
+void rainbowWithGlitter()
 {
   // built-in FastLED rainbow, plus some random sparkly glitter
   rainbow();
   addGlitter(80);
 }
 
-void addGlitter( fract8 chanceOfGlitter) 
+void addGlitter( fract8 chanceOfGlitter)
 {
   if( random8() < chanceOfGlitter) {
     leds[ random16(NUM_LEDS) ] += CRGB::White;
   }
 }
 
-void confetti() 
+void confetti()
 {
   // random colored speckles that blink in and fade smoothly
   fadeToBlackBy( leds, NUM_LEDS, 10);
@@ -453,41 +453,3 @@ void juggle() {
     dothue += 32;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
