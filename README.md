@@ -1,4 +1,4 @@
-# Hat led control software
+# Hat led panel control software
 Program to control the led lights on my graduation cap, for UTEP
 
 ## Contribute? :thinking:
