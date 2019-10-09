@@ -9,18 +9,6 @@
 
 FASTLED_USING_NAMESPACE
 
-
-
-
-
-
-
-
-
-
-
-
-
 int lower(char c) {
     int a = (int) c;
     if ((a >= 65) && (a <= 90))
@@ -62,19 +50,6 @@ short * stringToArray(char c) {
       default:  return blank_font5x7;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
