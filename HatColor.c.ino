@@ -379,6 +379,18 @@ void thetachi2018() {
   drawGrid(16, 7, d_1, CRGB::Blue);
   drawGrid(22, 7, d_8, CRGB::Blue);
 }
+
+void ep2018(){
+  fill_solid(leds, NUM_LEDS, CRGB::Black);
+  drawGrid(16, 14, e_font5x7, CRGB::Orange);
+  drawGrid(22, 14, p_font5x7, CRGB::Orange);
+
+  drawGrid(4, 7, d_2,  CRGB::Orange);
+  drawGrid(10, 7, d_0, CRGB::Orange);
+  drawGrid(16, 7, d_1, CRGB::Orange);
+  drawGrid(22, 7, d_8, CRGB::Orange);
+}
+
 void utep2018() {
   fill_solid(leds, NUM_LEDS, CRGB::Black);
   drawGrid(4, 14, u_font5x7, CRGB::Orange);
